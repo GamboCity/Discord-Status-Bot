@@ -18,7 +18,7 @@ LANGUAGE | en-US | ISO Language code
 DISCORD_TOKEN | REPLACE_ME | Discord token
 FIVEM_URL | https://REPLACE_ME/dynamic.json | Endpoint to fetch player information from
 UPDATE_INTERVAL | 60 | Interval in seconds to update presence
-DEBUG | 60 | Interval in seconds to update presence
+DEBUG | 0 | Whether to enable debug mode
 
 ## Contribution
 
