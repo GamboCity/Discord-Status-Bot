@@ -43,7 +43,7 @@ jobs:
       - name: Build and export to Docker
         uses: docker/build-push-action@v6
         with:
-          file: ./Discord-Status-Bot/Dockerfile
+          file: ./src/Dockerfile
           context: .
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
