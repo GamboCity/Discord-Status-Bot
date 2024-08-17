@@ -1,0 +1,7 @@
+services:
+  discord-status-bot:
+    image: ghcr.io/gambocity/discord-status-bot:latest
+    environment:
+      LANGUAGE: en-US
+      DISCORD_TOKEN: REPLACE_ME
+      FIVEM_URL: https://REPLACE_ME/dynamic.json

@@ -1,0 +1,55 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.2.32602.215
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{67B64E28-0A21-449B-81DC-8D7E69DDD5A4}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".github", ".github", "{BBD6ABE8-EAF1-475F-9E3B-6924D8C7FE09}"
+	ProjectSection(SolutionItems) = preProject
+		.github\dependabot.yml = .github\dependabot.yml
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "workflows", "workflows", "{CE605FA1-9A36-4703-90B3-BAB1B06668EA}"
+	ProjectSection(SolutionItems) = preProject
+		.github\workflows\publish.yml = .github\workflows\publish.yml
+		.github\workflows\tests.yml = .github\workflows\tests.yml
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Discord-Status-Bot", "src\Discord-Status-Bot.csproj", "{FEB309AB-EAC3-4E33-959B-8DC13A7734E8}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|x64 = Debug|x64
+		Release|Any CPU = Release|Any CPU
+		Release|x64 = Release|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{67B64E28-0A21-449B-81DC-8D7E69DDD5A4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{67B64E28-0A21-449B-81DC-8D7E69DDD5A4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{67B64E28-0A21-449B-81DC-8D7E69DDD5A4}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{67B64E28-0A21-449B-81DC-8D7E69DDD5A4}.Debug|x64.Build.0 = Debug|Any CPU
+		{67B64E28-0A21-449B-81DC-8D7E69DDD5A4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{67B64E28-0A21-449B-81DC-8D7E69DDD5A4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{67B64E28-0A21-449B-81DC-8D7E69DDD5A4}.Release|x64.ActiveCfg = Release|Any CPU
+		{67B64E28-0A21-449B-81DC-8D7E69DDD5A4}.Release|x64.Build.0 = Release|Any CPU
+		{FEB309AB-EAC3-4E33-959B-8DC13A7734E8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FEB309AB-EAC3-4E33-959B-8DC13A7734E8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FEB309AB-EAC3-4E33-959B-8DC13A7734E8}.Debug|x64.ActiveCfg = Debug|x64
+		{FEB309AB-EAC3-4E33-959B-8DC13A7734E8}.Debug|x64.Build.0 = Debug|x64
+		{FEB309AB-EAC3-4E33-959B-8DC13A7734E8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FEB309AB-EAC3-4E33-959B-8DC13A7734E8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FEB309AB-EAC3-4E33-959B-8DC13A7734E8}.Release|x64.ActiveCfg = Release|x64
+		{FEB309AB-EAC3-4E33-959B-8DC13A7734E8}.Release|x64.Build.0 = Release|x64
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{CE605FA1-9A36-4703-90B3-BAB1B06668EA} = {BBD6ABE8-EAF1-475F-9E3B-6924D8C7FE09}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {6D281E48-1C4C-4E7F-9AEC-FF17A28A975C}
+	EndGlobalSection
+EndGlobal

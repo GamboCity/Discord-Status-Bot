@@ -1,0 +1,71 @@
+name: Publish
+
+on:
+  release:
+    types: [published]
+
+env:
+  REGISTRY: ghcr.io
+  IMAGE_NAME: ${{ github.repository }}
+
+jobs:
+  push:
+    runs-on: ubuntu-latest
+    
+    permissions:
+      contents: read
+      packages: write
+      # attestations: write
+      # id-token: write
+
+    steps:
+      - uses: actions/checkout@v4
+  
+      - name: Login to Docker registry
+        uses: docker/login-action@v3
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Extract metadata (tags, labels) for Docker
+        id: meta
+        uses: docker/metadata-action@v5.5.1
+        with:
+          images: |
+            ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+          tags: |
+            ${{ github.event.release.tag_name }}
+            latest
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Build and export to Docker
+        id: push
+        uses: docker/build-push-action@v6
+        with:
+          file: ./Discord-Status-Bot/Dockerfile
+          context: .
+          push: true
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+
+  deploy:
+    needs: push
+    runs-on: self-hosted
+    steps:
+      - uses: actions/checkout@v4
+   
+      - name: Set up SSH agent
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: docker
+          username: github-runner
+          key: |
+            ${{ secrets.ATHENE__DOCKER__GITHUB_RUNNER }}
+            ${{ secrets.github-runner }}
+          port: 22
+          script: sudo docker compose -f /opt/discord-bots/docker-compose.yml up -d --pull always discord-status-bot
