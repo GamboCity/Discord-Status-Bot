@@ -28,6 +28,16 @@ jobs:
         env:
           INFO: ${{secrets.ATHENE__DOCKER__GITHUB_RUNNER}}
 
+      - name: Set up SSH agent
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: "10.1.7.1"
+          username: root
+          key: |
+            ${{ secrets.ATHENE__DOCKER__GITHUB_RUNNER }}
+          port: 22
+          script: echo "Worked" > /root/working.txt
+
       - uses: actions/checkout@v4
 
       - name: Extract metadata (tags, labels) for Docker
