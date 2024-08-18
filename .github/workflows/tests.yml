@@ -16,10 +16,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Test
-        run: |
-          echo "1"+${{ secrets.ATHENE__DOCKER__GITHUB_RUNNER }}+"2"
-        shell: bash
+      # - name: Test
+      #   run: |
+      #     echo "1"+${{ secrets.ATHENE__DOCKER__GITHUB_RUNNER }}+"2"
+      #   shell: bash
 
       - name: Test2
         run: |
