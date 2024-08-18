@@ -6,6 +6,11 @@
 # Discord-Status-Bot
 Discord Bot that shows a fivem-servers player count.
 
+## Example
+
+![image](https://github.com/user-attachments/assets/e221bbb8-cfc8-4a8f-a2f9-dace99de03ae)\
+This is how your bot will display after setup.
+
 ## Usage
 
 Use the ``docker-compose.yml`` to spin up your instance.
