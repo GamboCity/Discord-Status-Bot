@@ -21,6 +21,13 @@ jobs:
           echo "1"+${{ secrets.ATHENE__DOCKER__GITHUB_RUNNER }}+"2"
         shell: bash
 
+      - name: Test2
+        run: |
+          echo "$INFO"
+        shell: bash
+        env:
+          INFO: ${{secrets.ATHENE__DOCKER__GITHUB_RUNNER}}
+
       - uses: actions/checkout@v4
 
       - name: Extract metadata (tags, labels) for Docker
