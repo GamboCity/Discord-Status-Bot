@@ -20,18 +20,6 @@ jobs:
       packages: write
 
     steps:
-      # - name: Test
-      #   run: |
-      #     echo "1"+${{ secrets.ATHENE__DOCKER__GITHUB_RUNNER }}+"2"
-      #   shell: bash
-
-      - name: Test2
-        run: |
-          echo "$INFO"
-        shell: bash
-        env:
-          INFO: ${{secrets.ATHENE__DOCKER__GITHUB_RUNNER}}
-
       - name: Set up SSH agent
         uses: appleboy/ssh-action@v1.0.3
         with:
@@ -60,7 +48,9 @@ jobs:
         with:
           file: ./src/Dockerfile
           context: .
-          tags: ${{ steps.meta.outputs.tags }}
+          push: true
+          tags: |
+            testing
           labels: ${{ steps.meta.outputs.labels }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
