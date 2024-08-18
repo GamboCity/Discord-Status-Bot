@@ -66,6 +66,5 @@ jobs:
           username: github-runner
           key: |
             ${{ secrets.ATHENE__DOCKER__GITHUB_RUNNER }}
-            ${{ secrets.github-runner }}
           port: 22
           script: sudo docker compose -f /opt/discord-bots/docker-compose.yml up -d --pull always discord-status-bot
