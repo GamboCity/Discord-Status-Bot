@@ -10,11 +10,7 @@ namespace GamboCity_DiscordBot.src.Modules {
         private readonly HttpClient httpclient = new();
 
         public Task InitializeAsync() {
-            client.Ready += () => {
-                Task.Run(async () =>
-                    await UpdatePlayerStats());
-                return Task.CompletedTask;
-            };
+            client.Ready += UpdatePlayerStats;
 
             return Task.CompletedTask;
         }
