@@ -11,30 +11,37 @@ namespace GamboCity_DiscordBot.src {
             GatewayIntents = GatewayIntents.AllUnprivileged & GatewayIntents.GuildScheduledEvents & GatewayIntents.GuildInvites,
         };
 
-        private static readonly IConfiguration Configuration = new ConfigurationBuilder()
+        private readonly IConfiguration Configuration;
+
+        private readonly IServiceProvider Services;
+
+        public Program() {
+            Configuration = new ConfigurationBuilder()
                 .AddEnvironmentVariables()
                 .Build();
 
-        private static readonly IServiceProvider Services = new ServiceCollection()
+            if (!CheckEnvironmentValid())
+                Environment.Exit(1);
+
+            Services = new ServiceCollection()
                 .AddSingleton(Configuration)
                 .AddSingleton(SocketConfig)
                 .AddSingleton<DiscordSocketClient>()
                 .AddSingleton<DiscordStatus>()
                 .BuildServiceProvider();
+        }
 
         public static async Task Main(string[] _) {
-            //If environment invalid, exit with error code
-            if (!CheckEnvironmentValid())
-                Environment.Exit(1);
+            Program program = new();
 
-            SetLanguage(Configuration["LANGUAGE"]!);
+            SetLanguage(program.Configuration["LANGUAGE"]!);
 
-            await InitializeDiscordClient();
+            await program.InitializeDiscordClient();
 
             await Task.Delay(Timeout.Infinite);
         }
 
-        private static bool CheckEnvironmentValid() {
+        private bool CheckEnvironmentValid() {
             // Check if the DISCORD_TOKEN environment variable is set correctly
             string? discordToken = Configuration["DISCORD_TOKEN"];
             if (discordToken is null) {
@@ -84,7 +91,7 @@ namespace GamboCity_DiscordBot.src {
             Thread.CurrentThread.CurrentUICulture = cultureInfo;
         }
 
-        private static async Task InitializeDiscordClient() {
+        private async Task InitializeDiscordClient() {
             DiscordSocketClient client = Services.GetRequiredService<DiscordSocketClient>();
 
             client.Log += LogAsync;
@@ -95,12 +102,12 @@ namespace GamboCity_DiscordBot.src {
             await client.StartAsync();
         }
 
-        private static Task LogAsync(LogMessage message) {
+        private Task LogAsync(LogMessage message) {
             Console.WriteLine(message.ToString());
             return Task.CompletedTask;
         }
 
-        private static async Task InitializeServices() {
+        private async Task InitializeServices() {
             await Services.GetRequiredService<DiscordStatus>()
                 .InitializeAsync();
         }
