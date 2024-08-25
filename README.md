@@ -1,10 +1,17 @@
-[![Dependabot Updates](https://github.com/GamboCity/Discord-Status-Bot/actions/workflows/dependabot/dependabot-updates/badge.svg)](https://github.com/GamboCity/Discord-Status-Bot/actions/workflows/dependabot/dependabot-updates)
-
+[![Dependabot Updates](https://github.com/GamboCity/Discord-Status-Bot/actions/workflows/dependabot/dependabot-updates/badge.svg)](https://github.com/GamboCity/Discord-Status-Bot/actions/workflows/dependabot/dependabot-updates) 
 [![Tests](https://github.com/GamboCity/Discord-Status-Bot/actions/workflows/tests.yml/badge.svg)](https://github.com/GamboCity/Discord-Status-Bot/actions/workflows/tests.yml)
-[![Publish](https://github.com/GamboCity/Discord-Status-Bot/actions/workflows/publish.yml/badge.svg)](https://github.com/GamboCity/Discord-Status-Bot/actions/workflows/publish.yml)
+[![Publish](https://github.com/GamboCity/Discord-Status-Bot/actions/workflows/publish.yml/badge.svg)](https://github.com/GamboCity/Discord-Status-Bot/actions/workflows/publish.yml)\
+![GitHub Downloads (all assets, all releases)](https://img.shields.io/github/downloads/GamboCity/Discord-Status-Bot/total?color=#2dba4e)
+
+
 
 # Discord-Status-Bot
 Discord Bot that shows a fivem-servers player count.
+
+## Example
+
+![image](https://github.com/user-attachments/assets/e221bbb8-cfc8-4a8f-a2f9-dace99de03ae)\
+This is how your bot will display after setup.
 
 ## Usage
 
