@@ -1,12 +1,13 @@
 ﻿using Discord;
 using Discord.WebSocket;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Logging;
 using Newtonsoft.Json.Linq;
 using System.Globalization;
 using System.Net;
 
 namespace GamboCity_DiscordBot.src.Modules {
-    internal class DiscordStatus(DiscordSocketClient client, IConfiguration config) {
+    internal class DiscordStatus(DiscordSocketClient client, IConfiguration config, ILogger<DiscordStatus> logger) {
         private readonly HttpClient httpclient = new();
 
         public Task InitializeAsync() {
@@ -46,27 +47,27 @@ namespace GamboCity_DiscordBot.src.Modules {
 
             if (players is null) {
                 encounteredError = true;
-                Console.WriteLine("Error while updating stats: players is null");
+                logger.LogError("Error while updating stats: players is null");
             }
             if (maxPlayers is null) {
                 encounteredError = true;
-                Console.WriteLine("Error while updating stats: maxPlayers is null");
+                logger.LogError("Error while updating stats: maxPlayers is null");
             }
 
             if(!encounteredError) 
                 return true;
 
             if(config["DEBUG"] == "1")
-                Console.WriteLine($"Http response received: {responseJObject}");
+                logger.LogError($"Http response received: {responseJObject}");
             else
-                Console.WriteLine("To view the http response responsible for this error set DEBUG=1");
+                logger.LogError("To view the http response responsible for this error set DEBUG=1");
 
             return false;
         }
 
         private void NotifyHttpRequestException(HttpRequestException ex) {
-            Console.WriteLine($"Error while updating stats: {ex.Message}");
-            Console.WriteLine($"Your url \"{config["FIVEM_URL"]}\" is likely faulty.");
+            logger.LogError($"Error while updating stats: {ex.Message}");
+            logger.LogError($"Your url \"{config["FIVEM_URL"]}\" is likely faulty.");
             //if (!HttpStatusCode.BadGateway.Equals(ex.StatusCode))
             //    //throw;
         }
