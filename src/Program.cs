@@ -1,11 +1,11 @@
 using Discord;
 using Discord.WebSocket;
 using GamboCity_DiscordBot.Config;
+using GamboCity_DiscordBot.Language;
 using GamboCity_DiscordBot.src.Modules;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using System.Globalization;
 
 namespace GamboCity_DiscordBot.src {
     public class Program {
@@ -34,6 +34,9 @@ namespace GamboCity_DiscordBot.src {
                 .BuildServiceProvider();
 
             logger = Services.GetRequiredService<ILogger<Program>>();
+
+            DiscordSocketClient client = Services.GetRequiredService<DiscordSocketClient>();
+            client.Log += LogAsync;
         }
 
         public static async Task Main(string[] _) {
@@ -43,27 +46,15 @@ namespace GamboCity_DiscordBot.src {
             if (!configHelper.IsEnvironmentValid())
                 Environment.Exit(1);
 
-            SetLanguage(program.Configuration["LANGUAGE"]!);
+            LanguageHelper.SetLanguageFromConfiguration(program.Configuration);
 
-            await program.InitializeDiscordClient();
+            await program.Run();
 
             await Task.Delay(Timeout.Infinite);
         }
 
-        private static void SetLanguage(string language) {
-            CultureInfo cultureInfo = new(language);
-
-            CultureInfo.DefaultThreadCurrentCulture = cultureInfo;
-            Thread.CurrentThread.CurrentCulture = cultureInfo;
-            Thread.CurrentThread.CurrentUICulture = cultureInfo;
-        }
-
-        private async Task InitializeDiscordClient() {
+        private async Task Run() {
             DiscordSocketClient client = Services.GetRequiredService<DiscordSocketClient>();
-
-            client.Log += LogAsync;
-
-            await InitializeServices();
 
             await client.LoginAsync(TokenType.Bot, Configuration["DISCORD_TOKEN"]);
             await client.StartAsync();
@@ -72,11 +63,6 @@ namespace GamboCity_DiscordBot.src {
         private Task LogAsync(LogMessage message) {
             logger.LogInformation(message.ToString());
             return Task.CompletedTask;
-        }
-
-        private async Task InitializeServices() {
-            await Services.GetRequiredService<DiscordStatus>()
-                .InitializeAsync();
         }
     }
 }
