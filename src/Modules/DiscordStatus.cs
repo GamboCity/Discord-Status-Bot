@@ -7,12 +7,21 @@ using System.Globalization;
 using System.Net;
 
 namespace GamboCity_DiscordBot.src.Modules {
-    internal class DiscordStatus(DiscordSocketClient client, IConfiguration config, ILogger<DiscordStatus> logger) {
+    internal class DiscordStatus {
         private readonly HttpClient httpclient = new();
+        private readonly DiscordSocketClient client;
+        private readonly IConfiguration config;
+        private readonly ILogger<DiscordStatus> logger;
+
+        public DiscordStatus(DiscordSocketClient client, IConfiguration config, ILogger<DiscordStatus> logger) {
+            this.client = client;
+            this.config = config;
+            this.logger = logger;
+
+            client.Ready += UpdatePlayerStats;
+        }
 
         public Task InitializeAsync() {
-            client.Ready += UpdatePlayerStats;
-
             return Task.CompletedTask;
         }
 
@@ -68,8 +77,6 @@ namespace GamboCity_DiscordBot.src.Modules {
         private void NotifyHttpRequestException(HttpRequestException ex) {
             logger.LogError($"Error while updating stats: {ex.Message}");
             logger.LogError($"Your url \"{config["FIVEM_URL"]}\" is likely faulty.");
-            //if (!HttpStatusCode.BadGateway.Equals(ex.StatusCode))
-            //    //throw;
         }
     }
 }
