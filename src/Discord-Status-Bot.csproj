@@ -35,7 +35,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Update="Language\language.Designer.cs">
+    <Compile Update="Language\Language.Designer.cs">
       <DependentUpon>Language.resx</DependentUpon>
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
@@ -48,7 +48,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Language\Language.resx">
-      <LastGenOutput>language.Designer.cs</LastGenOutput>
+      <LastGenOutput>Language.Designer.cs</LastGenOutput>
       <Generator>ResXFileCodeGenerator</Generator>
     </EmbeddedResource>
   </ItemGroup>
