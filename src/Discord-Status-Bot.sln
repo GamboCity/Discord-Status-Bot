@@ -7,16 +7,16 @@ Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-co
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".github", ".github", "{BBD6ABE8-EAF1-475F-9E3B-6924D8C7FE09}"
 	ProjectSection(SolutionItems) = preProject
-		.github\dependabot.yml = .github\dependabot.yml
+		..\.github\dependabot.yml = ..\.github\dependabot.yml
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "workflows", "workflows", "{CE605FA1-9A36-4703-90B3-BAB1B06668EA}"
 	ProjectSection(SolutionItems) = preProject
-		.github\workflows\publish.yml = .github\workflows\publish.yml
-		.github\workflows\tests.yml = .github\workflows\tests.yml
+		..\.github\workflows\publish.yml = ..\.github\workflows\publish.yml
+		..\.github\workflows\tests.yml = ..\.github\workflows\tests.yml
 	EndProjectSection
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Discord-Status-Bot", "src\Discord-Status-Bot.csproj", "{FEB309AB-EAC3-4E33-959B-8DC13A7734E8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Discord-Status-Bot", "Discord-Status-Bot\Discord-Status-Bot.csproj", "{537B089C-AC73-4B54-9C0E-CEBE7C7D8765}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -34,14 +34,14 @@ Global
 		{67B64E28-0A21-449B-81DC-8D7E69DDD5A4}.Release|Any CPU.Build.0 = Release|Any CPU
 		{67B64E28-0A21-449B-81DC-8D7E69DDD5A4}.Release|x64.ActiveCfg = Release|Any CPU
 		{67B64E28-0A21-449B-81DC-8D7E69DDD5A4}.Release|x64.Build.0 = Release|Any CPU
-		{FEB309AB-EAC3-4E33-959B-8DC13A7734E8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{FEB309AB-EAC3-4E33-959B-8DC13A7734E8}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{FEB309AB-EAC3-4E33-959B-8DC13A7734E8}.Debug|x64.ActiveCfg = Debug|x64
-		{FEB309AB-EAC3-4E33-959B-8DC13A7734E8}.Debug|x64.Build.0 = Debug|x64
-		{FEB309AB-EAC3-4E33-959B-8DC13A7734E8}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{FEB309AB-EAC3-4E33-959B-8DC13A7734E8}.Release|Any CPU.Build.0 = Release|Any CPU
-		{FEB309AB-EAC3-4E33-959B-8DC13A7734E8}.Release|x64.ActiveCfg = Release|x64
-		{FEB309AB-EAC3-4E33-959B-8DC13A7734E8}.Release|x64.Build.0 = Release|x64
+		{537B089C-AC73-4B54-9C0E-CEBE7C7D8765}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{537B089C-AC73-4B54-9C0E-CEBE7C7D8765}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{537B089C-AC73-4B54-9C0E-CEBE7C7D8765}.Debug|x64.ActiveCfg = Debug|x64
+		{537B089C-AC73-4B54-9C0E-CEBE7C7D8765}.Debug|x64.Build.0 = Debug|x64
+		{537B089C-AC73-4B54-9C0E-CEBE7C7D8765}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{537B089C-AC73-4B54-9C0E-CEBE7C7D8765}.Release|Any CPU.Build.0 = Release|Any CPU
+		{537B089C-AC73-4B54-9C0E-CEBE7C7D8765}.Release|x64.ActiveCfg = Release|x64
+		{537B089C-AC73-4B54-9C0E-CEBE7C7D8765}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

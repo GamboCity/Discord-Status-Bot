@@ -30,7 +30,7 @@ jobs:
 
       - name: Extract metadata (tags, labels) for Docker
         id: meta
-        uses: docker/metadata-action@v5.5.1
+        uses: docker/metadata-action@v5.6.1
         with:
           images: |
             ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
@@ -45,14 +45,13 @@ jobs:
         id: push
         uses: docker/build-push-action@v6
         with:
-          file: ./src/Dockerfile
-          context: .
-          push: true
+          file: ./src/Discord-Status-Bot/Dockerfile
+          context: ./Discord-Status-Bot
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
-          provenance: false
+          push: true
 
   deploy:
     needs: push
@@ -61,7 +60,7 @@ jobs:
       - uses: actions/checkout@v4
    
       - name: Set up SSH agent
-        uses: appleboy/ssh-action@v1.1.0
+        uses: appleboy/ssh-action@v1.2.0
         with:
           host: docker
           username: github-runner
