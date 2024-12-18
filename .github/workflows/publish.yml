@@ -45,14 +45,13 @@ jobs:
         id: push
         uses: docker/build-push-action@v6
         with:
-          file: ./src/Dockerfile
-          context: .
-          push: true
+          file: ./src/Discord-Status-Bot/Dockerfile
+          context: ./Discord-Status-Bot
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
-          provenance: false
+          push: true
 
   deploy:
     needs: push

@@ -1,0 +1,16 @@
+﻿<Project ToolsVersion="15.0" Sdk="Microsoft.Docker.Sdk">
+  <PropertyGroup Label="Globals">
+    <ProjectVersion>2.1</ProjectVersion>
+    <DockerTargetOS>Linux</DockerTargetOS>
+    <DockerPublishLocally>False</DockerPublishLocally>
+    <ProjectGuid>67b64e28-0a21-449b-81dc-8d7e69ddd5a4</ProjectGuid>
+    <UserSecretsId>2b30f87e-f60f-4aa9-93bf-ef59f10ce06b</UserSecretsId>
+  </PropertyGroup>
+  <ItemGroup>
+    <None Include="docker-compose.override.yml">
+      <DependentUpon>docker-compose.yml</DependentUpon>
+    </None>
+    <None Include="docker-compose.yml" />
+    <None Include="Discord-Status-Bot/.dockerignore" />
+  </ItemGroup>
+</Project>
