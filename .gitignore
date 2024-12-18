@@ -398,3 +398,4 @@ FodyWeavers.xsd
 *.sln.iml
 /docker-compose.dcproj
 /docker-compose.override.yml
+/src/docker-compose.override.yml
