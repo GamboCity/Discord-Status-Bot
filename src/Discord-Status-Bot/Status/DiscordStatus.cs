@@ -55,6 +55,9 @@ public class DiscordStatus : IDisposable {
     #region Timer
     public void Start() {
         logger.LogInformation("Starting DiscordStatus");
+
+        UpdatePlayerStats().Wait();
+
         _timerTask = DoWorkAsync();
     }
 
@@ -89,6 +92,7 @@ public class DiscordStatus : IDisposable {
                     ActivityType.Watching);
 
                 await client.SetActivityAsync(activity);
+                logger.LogInformation($"Setting activity to: {activity}");
             }
         } catch (HttpRequestException ex) {
             NotifyHttpRequestException(ex);
