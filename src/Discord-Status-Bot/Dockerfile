@@ -23,4 +23,5 @@ RUN dotnet publish "./Discord-Status-Bot.csproj" -c $BUILD_CONFIGURATION -o /app
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
+USER $APP_UID
 ENTRYPOINT ["dotnet", "Discord-Status-Bot.dll"]
