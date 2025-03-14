@@ -52,19 +52,3 @@ jobs:
           cache-from: type=gha
           cache-to: type=gha,mode=max
           push: true
-
-  deploy:
-    needs: push
-    runs-on: self-hosted
-    steps:
-      - uses: actions/checkout@v4
-   
-      - name: Set up SSH agent
-        uses: appleboy/ssh-action@v1.2.2
-        with:
-          host: docker
-          username: github-runner
-          key: |
-            ${{ secrets.ATHENE__DOCKER__GITHUB_RUNNER }}
-          port: 22
-          script: sudo docker compose -f /opt/discord-bots/docker-compose.yml up -d --pull always discord-status-bot
