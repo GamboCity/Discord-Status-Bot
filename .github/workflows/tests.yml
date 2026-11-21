@@ -40,7 +40,7 @@ jobs:
           driver: docker
         
       - name: Build and export to Docker
-        uses: docker/build-push-action@v6
+        uses: docker/build-push-action@v7
         with:
           file: ./src/Discord-Status-Bot/Dockerfile
           context: ./src/Discord-Status-Bot
